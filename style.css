@@ -1,0 +1,88 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:100,300";
+@import "https://fonts.googleapis.com/css?family=Roboto+Mono:300,700";
+
+body {
+  background: -moz-linear-gradient(-45deg, #f7cac9 0%, #92a8d1 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #f7cac9 0%, #92a8d1 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #f7cac9 0%, #92a8d1 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* IE6-9 fallback on horizontal gradient */
+  font-family: "Roboto Mono";
+  width: 100%;
+  margin: 0;
+}
+
+p {
+  color: #f2efe9;
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: 700;
+}
+
+#mapid {
+  height: 400px;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #f2efe9;
+  background-image: none;
+  font-family: "Roboto Mono";
+  font-weight: 300;
+  font-size: 16px;
+}
+
+option {
+  font-family: "Roboto Mono";
+  font-weight: 300;
+  font-size: 16px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 2em;
+  line-height: 2;
+  background: #f2efe9;
+  overflow: hidden;
+  border-radius: 0.1em;
+}
+select {
+  flex: 1;
+  padding: 0 0.5em;
+  color: rgb(73, 73, 73);
+  cursor: pointer;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #aad3df;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: 0.5s all ease;
+  -o-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+}
+
+.select:hover::after {
+  color: #edca3f;
+}
