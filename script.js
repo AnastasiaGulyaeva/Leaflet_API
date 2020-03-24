@@ -14,6 +14,7 @@ var markers = L.markerClusterGroup();
 let data_markers = [];
 let arrKindFood = [];
 let splitArray = [];
+let sepArrKindFood = [];
 
 function onMapLoad() {
   console.log("Mapa cargado");
@@ -26,7 +27,7 @@ function onMapLoad() {
 
   // Coger la info de base de datos
   $.getJSON("http://localhost/mapa/api/apiRestaurants.php", function(data) {
-    for (i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       data_markers.push(data[i]);
     }
     console.log(data_markers);
@@ -36,6 +37,21 @@ function onMapLoad() {
       arrKindFood.push(val.kind_food);
     });
     console.log(arrKindFood);
+
+    // separar los valores
+    sepArrKindFood = arrKindFood.toString();
+    sepArrKindFood = sepArrKindFood.split(",");
+    console.log(sepArrKindFood);
+
+    // crear nuevo array sin kind_food repetidos
+    finalArray = [...new Set(sepArrKindFood)];
+    finalArray.unshift("Todos");
+    console.log(finalArray);
+
+    // añádir los datos al menu
+    for (let j = 0; j < finalArray.length; j++) {
+      $("#kind_food_selector").append("<option>" + finalArray[j] + "</option>");
+    }
 
     // añadir los markers a la mapa
     for (let marker of data_markers) {
@@ -52,16 +68,6 @@ function onMapLoad() {
       );
     }
     map.addLayer(markers);
-
-    // crear nuevo array sin kind_food repetidos
-    splitArray = [...new Set(arrKindFood)];
-    splitArray.unshift("Todos");
-    console.log(splitArray);
-
-    // añádir los datos al menu
-    for (let j = 0; j < splitArray.length; j++) {
-      $("#kind_food_selector").append("<option>" + splitArray[j] + "</option>");
-    }
   });
 }
 
